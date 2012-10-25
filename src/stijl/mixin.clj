@@ -21,4 +21,9 @@
   ([r]
    (border-radius r r r r)))
 
+(defmixin box-shadow [& specs]
+  `[:box-shadow ~@specs
+    :-moz-box-shadow ~@specs
+    :-webkit-box-shadow ~@specs])
+
 ; vim: lispwords+=defmixin

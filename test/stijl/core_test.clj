@@ -179,4 +179,92 @@ border-radius: 10px 10px 10px 10px;
             :background-color "#F0EFEB"
             :width px939]
            )
-         "body {\nbackground-color: rgba(42, 153, 255, 0.17);\n}\n.well {\nbackground-color: rgba(0, 0, 0, 0.05);\noverflow: hidden;\npadding-bottom: 0;\n}\ninput, textarea, select, .uneditable-input {\nborder: 1px solid rgba(0, 0, 0, 0.25);\nbackground-color: rgba(255, 255, 255, 0.9);\n}\n\n.input-prepend .add-on, .input-append .add-on {\nborder: 1px solid rgba(0, 0, 0, 0.25);\n}\n.btn {\nborder-color: rgba(0, 0, 0, 0.5);\n}\n\n.form-horizontal .form-actions {\npadding-left: 180px;\n}\n.form-actions {\nbackground-color: rgba(0, 0, 0, 0.05);\nborder-top: solid;\nborder-1px: rgba(0, 0, 0, 0.2);\nmargin: 18px -20px -20px;\n}\nlegend {\nborder-bottom: solid;\nborder-1px: rgba(0, 0, 0, 0.2);\n}\n.navbar-inner {\nbackground-color: #9AB;\nbackground-image: url(/img/linen-grad.png);\nbackground-repeat: repeat-x;\nbox-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 -1px 0 rgba(0, 0, 0, 0.3) inset;\nmin-height: 40px;\n}\n\n.navbar .brand {\ncolor: #FC0;\nfont-family: Arial;\ntext-shadow: 0 -1px 0 rgba(0, 0, 0, 0.77) , 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n.navbar .brand em {\ncolor: #444;\nfont-weight: bold;\ntext-shadow: 0 1px 0 rgba(255, 255, 255, 0.57);\n}\n.navbar .nav > li > a {\ncolor: rgba(0, 0, 0, 0.65);\nfont-family: Arial;\nfont-size: 16px;\ntext-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) , 0 1px 0 rgba(255, 255, 255, 0.4);\n}\n.navbar .nav > li > a:hover {\ncolor: #eee;\ntext-shadow: 0 -1px 0 rgba(0, 0, 0, 0.57);\n}\n\n.navbar .nav .active > a, .navbar .nav .active > a:hover {\nbackground-color: rgba(41, 59, 77, 0.29);\nborder-left: solid;\nborder-1px: rgba(0, 0, 0, 0.2);\nborder-right: solid;\nborder-1px: rgba(0, 0, 0, 0.2);\ncolor: #FFF;\ntext-shadow: 0 -1px 0 rgba(0, 0, 0, 0.57);\n}\n.navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {\nbackground-color: rgba(41, 59, 77, 0.29);\n}\n.navbar .divider-vertical {\nbackground-color: rgba(0, 0, 0, 0.33);\nborder-right: 1px solid rgba(255, 255, 255, 0.56);\nheight: 40px;\nmargin: 0 9px;\noverflow: hidden;\nwidth: 1px;\n}\ndiv.top {\nmargin-top: 80px;\n}\ntable.table {\nbox-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);\n-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);\n-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);\nbackground-color: #F0EFEB;\nwidth: 939px;\n}\n")))
+         "body {
+background-color: rgba(42, 153, 255, 0.17);
+}
+.well {
+background-color: rgba(0, 0, 0, 0.05);
+overflow: hidden;
+padding-bottom: 0;
+}
+input, textarea, select, .uneditable-input {
+border: 1px solid rgba(0, 0, 0, 0.25);
+background-color: rgba(255, 255, 255, 0.9);
+}
+
+.input-prepend .add-on, .input-append .add-on {
+border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.btn {
+border-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-horizontal .form-actions {
+padding-left: 180px;
+}
+.form-actions {
+background-color: rgba(0, 0, 0, 0.05);
+border-top: solid 1px rgba(0, 0, 0, 0.2);
+margin: 18px -20px -20px;
+}
+legend {
+border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+.navbar-inner {
+background-color: #9AB;
+background-image: url(/img/linen-grad.png);
+background-repeat: repeat-x;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.50), 0 -1px 0 rgba(0, 0, 0, 0.3) inset;
+min-height: 40px;
+}
+
+.navbar .brand {
+color: #FC0;
+font-family: Arial;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.77) , 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.navbar .brand em {
+color: #444;
+font-weight: bold;
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.57);
+}
+.navbar .nav > li > a {
+color: rgba(0, 0, 0, 0.65);
+font-family: Arial;
+font-size: 16px;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2) , 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.navbar .nav > li > a:hover {
+color: #eee;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.57);
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+background-color: rgba(41, 59, 77, 0.29);
+border-left: solid 1px rgba(0, 0, 0, 0.2);
+border-right: solid 1px rgba(0, 0, 0, 0.2);
+color: #FFF;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.57);
+}
+.navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+background-color: rgba(41, 59, 77, 0.29);
+}
+.navbar .divider-vertical {
+background-color: rgba(0, 0, 0, 0.33);
+border-right: 1px solid rgba(255, 255, 255, 0.56);
+height: 40px;
+margin: 0 9px;
+overflow: hidden;
+width: 1px;
+}
+div.top {
+margin-top: 80px;
+}
+table.table {
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) , inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+background-color: #F0EFEB;
+width: 939px;
+}
+")))

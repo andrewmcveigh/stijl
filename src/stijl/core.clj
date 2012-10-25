@@ -36,9 +36,15 @@
          (or (selector? form) (mixin? form)))))
 
 (defn collapse-properties [[[k] vs]]
-  (cond (vector? (first vs)) (mapv (fn [[k2 v]]
-                                     (str (name k) \- (name k2) ": " v))
-                                   (partition 2 (first vs)))
+  (cond (vector? (first vs)) (mapv (fn [[[k2] v]]
+                                     (apply str
+                                            (name k)
+                                            \-
+                                            (name k2)
+                                            ": " 
+                                            (interpose \space v)))
+                                   (partition 2 (partition-by keyword?
+                                                              (first vs))))
         :default [(apply str
                          (str (name k) ": ")
                          (interpose \space (map #(if (symbol? %) (name %) %) vs)))]))

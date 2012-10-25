@@ -1,6 +1,6 @@
 (ns stijl.core)
 
-(def css-units ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc"])
+(def css-units ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc" "%"])
 
 (def css-re-pattern
   (re-pattern (str (apply str \( (interpose \| css-units)) ")(-?\\d+)")))

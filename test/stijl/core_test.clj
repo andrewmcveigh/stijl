@@ -108,6 +108,7 @@ border-radius: 10px 10px 10px 10px;
 (css
   [$table
    [$tr :line-height "18px"
-    [$td :padding 0
+    [$td $th :padding 0
      [$a.btn :color "#AAA"]
-     [$span :color "#339"]]]])
+     [$span $p :color "#339"]]
+    [$th :font-weight bold]]])

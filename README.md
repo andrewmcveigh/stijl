@@ -4,7 +4,7 @@ A Clojure library designed to generate CSS from clojure vectors.
 
 Inspiration taken from hiccup & sass.
 
-## Usage
+## Syntax
 
 ### Selectors
 
@@ -37,7 +37,7 @@ equates to:
 
 ### Descendants
 
-Descendant selectors can be defined with:
+Descendant selectors can be defined with nested rules:
 
     [$#container
      [$span :color "#333"]]
@@ -46,20 +46,26 @@ equates to:
 
     #container span { color: #333 }
 
-They can get quite complex.
+Nesting can get quite complex:
 
     [$table
      [$tr :line-height "18px"
-      [$td :padding 0
-       [$a.btn :color "#AAA"]
-       [$span :color "#339"]]]]
+       [$td $th :padding 0
+         [$a.btn :color "#AAA"]
+         [$span $p :color "#339"]]
+       [$th :font-weight bold]]]
 
 equates to:
 
     table tr { line-height: 18px; }
-    table tr td { padding: 0; }
-    table tr td a.btn { color: #AAA; }
-    table tr td span { color: #339; }
+    table tr td, table tr th { padding: 0; }
+    table tr td a.btn, table tr th a.btn { color: #AAA; }
+    table tr td span, table tr td p, table tr th span, table tr th p {
+      color: #339;
+    }
+    table tr th { font-weight: bold; }
+
+## Usage
 
 ### in-style
 

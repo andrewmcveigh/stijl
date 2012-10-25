@@ -6,6 +6,18 @@ Inspiration taken from hiccup & sass.
 
 ## Installation
 
+Currently, Stijl is not in any Maven repository. We need to checkout this git
+repo, and <code>lein install</code> it before we declare it in
+<code>project.clj</code>.
+
+    git clone https://github.com/andrewmcveigh/stijl.git
+    
+    lein install
+
+Project.clj
+
+    [com.dirtybrussels/stijl "0.1.0-SNAPSHOT"]
+
 ## Syntax
 
 ### Selectors
@@ -106,6 +118,73 @@ equates to:
       color: #339;
     }
     table tr th { font-weight: bold; }
+
+### Shortcuts
+
+Shortcuts are simple Clojure functions that return a string. They allow us to
+write CSS properties in a more "Clojure-like" way. We can also use them in
+"compositions" or "mixins".
+
+    (defn px [n]
+      (str n "px"))
+
+    (px 3) => "3px"
+    
+    (defn rgba [r g b a]
+      (format "rgba(%s, %s, %s, %s)" r g b a))
+
+    (rgba 0 0 0 0.75) => "rgba(0, 0, 0, 0.75)"
+    
+    (defn url [x]
+      (format "url(%s)" x))
+
+    (url "/img/button.png") => "url(/img/button.png)"
+
+#### Symbol Shortcuts
+
+The are also a set of <code>symbol</code> shortcuts. As Clojure syntax doesn't
+allow us to write <code>1px</code> without quoting as a <code>string</code>, we
+offer a symbol shortcut: <code>px1</code>.
+
+Symbol shortcuts currently work with measurement units:
+
+    ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc"]
+    
+    em-10 => "-10em"
+    px100 => "100px"
+    in6   => "6in"
+
+## Mixins
+
+Mixins allow us to pre-define CSS properties to use in rules. They are composed
+of Clojure functions that return a vector of properties.
+
+The defmixin <code>macro</code> decorates the function <code>var</code> with
+<code>{:stijl/mixin true}</code> metadata, so Stijl knows it's a mixin.
+
+    (defmixin border-radius
+      ([tl tr bl br]
+       (let [corners (mapv px [tl tr bl br])]
+         `[:border-radius ~@corners
+           :-moz-border-radius ~@corners
+           :-webkit-border-radius ~@corners]))
+      ([r]
+       (border-radius r r r r)))
+
+    (border-radius 5) => [:border-radius "5px" "5px" "5px" "5px"
+                          :-moz-border-radius "5px" "5px" "5px" "5px"
+                          :-webkit-border-radius "5px" "5px" "5px" "5px"]
+
+    (css [$div.drop-down (border-radius 3) :margin 0])
+    => div.dropdown {
+         border-radius: 5px 5px 5px 5px;
+         -moz-border-radius: 5px 5px 5px 5px;
+         -webkit-border-radius: 5px 5px 5px 5px;
+         margin: 0;
+       }
+
+Mixins can be used anywhere in the form, but the will always be rendered at
+the top of the form, in the order they were written.
 
 ## Usage
 
@@ -215,71 +294,6 @@ equates to:
         text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.77) , 0 1px 0 rgba(255, 255, 255, 0.2);
         }
         "]
-
-### Shortcuts
-
-Shortcuts are simple Clojure functions that return a string. They allow us to
-write CSS properties in a more "Clojure-like" way. We can also use them in
-"compositions" or "mixins".
-
-    (defn px [n]
-      (str n "px"))
-
-    (px 3) => "3px"
-    
-    (defn rgba [r g b a]
-      (format "rgba(%s, %s, %s, %s)" r g b a))
-
-    (rgba 0 0 0 0.75) => "rgba(0, 0, 0, 0.75)"
-    
-    (defn url [x]
-      (format "url(%s)" x))
-
-    (url "/img/button.png") => "url(/img/button.png)"
-
-The are also a set of <code>symbol</code> shortcuts. As Clojure syntax doesn't
-allow us to write <code>1px</code> without quoting as a <code>string</code>, we
-offer a symbol shortcut: <code>px1</code>.
-
-Symbol shortcuts currently work with measurement units:
-
-    ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc"]
-    
-    em-10 => "-10em"
-    px100 => "100px"
-    in6   => "6in"
-
-### Mixins
-
-Mixins allow us to pre-define CSS properties to use in rules. They are composed
-of Clojure functions that return a vector of properties.
-
-The defmixin <code>macro</code> decorates the function <code>var</code> with
-<code>{:stijl/mixin true}</code> metadata, so Stijl knows it's a mixin.
-
-    (defmixin border-radius
-      ([tl tr bl br]
-       (let [corners (mapv px [tl tr bl br])]
-         `[:border-radius ~@corners
-           :-moz-border-radius ~@corners
-           :-webkit-border-radius ~@corners]))
-      ([r]
-       (border-radius r r r r)))
-
-    (border-radius 5) => [:border-radius "5px" "5px" "5px" "5px"
-                          :-moz-border-radius "5px" "5px" "5px" "5px"
-                          :-webkit-border-radius "5px" "5px" "5px" "5px"]
-
-    (css [$div.drop-down (border-radius 3) :margin 0])
-    => div.dropdown {
-         border-radius: 5px 5px 5px 5px;
-         -moz-border-radius: 5px 5px 5px 5px;
-         -webkit-border-radius: 5px 5px 5px 5px;
-         margin: 0;
-       }
-
-Mixins can be used anywhere in the form, but the will always be rendered at
-the top of the form, in the order they were written.
 
 ## License
 

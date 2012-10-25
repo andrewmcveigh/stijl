@@ -28,7 +28,7 @@
   (when (vector? form) (selector? (first form))))
 
 (defn mixin? [form]
-  (when (list? form) (-> form first resolve meta :mixin)))
+  (when (list? form) (-> form first resolve meta :stijl/mixin)))
 
 (defn rules? [form]
   (not (if (vector? form)

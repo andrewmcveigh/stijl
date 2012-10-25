@@ -10,7 +10,7 @@
   (format "url(%s)" x))
 
 (defmacro defmixin [name & body]
-  `(defn ~(with-meta name {:mixin true}) ~@body))
+  `(defn ~(with-meta name {:stijl/mixin true}) ~@body))
 
 (defmixin border-radius
   ([tl tr bl br]

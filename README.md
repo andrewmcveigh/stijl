@@ -8,8 +8,48 @@ Inspiration taken from hiccup & sass.
 
 ### Selectors
 
-Selectors are defined with a symbol, prefixed with a '$'. They can be anywhere
-within the form, however it's customary to put them first.
+Selectors are defined with a symbol, prefixed with a <code>$</code>. They can
+be anywhere within the form, however it's customary to put them first.
+
+#### Simple Selectors
+
+    $body
+    $div.container
+    $input#email
+
+#### Child Selectors
+
+    $body>p
+
+#### Sibling Selectors
+
+    $h1+h2
+
+#### Decendant Selectors
+
+    $div*p
+
+#### Attribute Selectors
+
+Clojure's syntax doesn't allow for <code>[]</code> in symbols, therefore we
+must specify attributes differently.
+
+    $input:type=text
+
+equates to:
+
+    input[type=text]
+
+For more complex attributes, such as <code>href</code>, or where we want to use
+a different "equality" operator we can fall back to using a string selector.
+
+    "$a[rel~=\"copyright\"]"
+    "$a[href=\"http://www.w3.org/\"]"
+
+equates to:
+
+    a[rel~="copyright"]
+    a[href="http://www.w3.org/"]
 
 ### Rules
 

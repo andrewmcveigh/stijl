@@ -6,17 +6,78 @@ Inspiration taken from hiccup & sass.
 
 ## Usage
 
+### Selectors
+
+Selectors are defined with a symbol, prefixed with a '$'. They can be anywhere
+within the form, however it's customary to put them first.
+
+### Rules
+
+A Stijl rule is analogous to a CSS rule.
+
+    [$h1 :font-family sans-serif]
+
+is the same as:
+
+    [$h1 :font [:family sans-serif]]
+
+equates to:
+
+    h1 { font-family: sans-serif }
+
+### Grouping
+
+Rules can be grouped.
+
+    [$h1 $h2 $h3 :font [:family sans-serif]]
+
+equates to:
+
+    h1, h2, h3 { font-family: sans-serif }
+
+### Descendants
+
+Descendant selectors can be defined with:
+
+    [$#container
+     [$span :color "#333"]]
+
+equates to:
+
+    #container span { color: #333 }
+
+They can get quite complex.
+
+    [$table
+     [$tr :line-height "18px"
+      [$td :padding 0
+       [$a.btn :color "#AAA"]
+       [$span :color "#339"]]]]
+
+equates to:
+
+    table tr { line-height: 18px; }
+    table tr td { padding: 0; }
+    table tr td a.btn { color: #AAA; }
+    table tr td span { color: #339; }
+
+### in-style
+
     (in-style :margin [:top 0 :left auto]) => "margin-top: 0;margin-left: auto"
+
+### css
 
     (css [$demo :margin-top px80]) => "demo {\nmargin-top: 80px;\n}\n"
     (css [$demo :margin-top px-8]) => "demo {\nmargin-top: -8px;\n}\n"
 
+### style
+
     (style
-        [$body :background-color (rgba 42 153 255 0.17)]
-        [$.well
-         :background-color (rgba 0 0 0 0.05)
-         :overflow hidden
-         :padding [:bottom 0]])
+      [$body :background-color (rgba 42 153 255 0.17)]
+      [$.well
+       :background-color (rgba 0 0 0 0.05)
+       :overflow hidden
+       :padding [:bottom 0]])
 
     => [:style {:type "text/css"}
         "body {

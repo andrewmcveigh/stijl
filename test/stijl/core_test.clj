@@ -104,3 +104,10 @@ border-radius: 10px 10px 10px 10px;
    [$.brand
     :font [:family Arial]
     :text-shadow 0 (px -1) 0 (rgba 0 0 0 0.77) \, 0 (px 1) 0 (rgba 255 255 255 0.2)]])
+
+(css
+  [$table
+   [$tr :line-height "18px"
+    [$td :padding 0
+     [$a.btn :color "#AAA"]
+     [$span :color "#339"]]]])

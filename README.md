@@ -119,7 +119,7 @@ equates to:
     }
     table tr th { font-weight: bold; }
 
-### Shortcuts
+## Shortcuts
 
 Shortcuts are simple Clojure functions that return a string. They allow us to
 write CSS properties in a more "Clojure-like" way. We can also use them in
@@ -140,7 +140,7 @@ write CSS properties in a more "Clojure-like" way. We can also use them in
 
     (url "/img/button.png") => "url(/img/button.png)"
 
-#### Symbol Shortcuts
+### Symbol Shortcuts
 
 The are also a set of <code>symbol</code> shortcuts. As Clojure syntax doesn't
 allow us to write <code>1px</code> without quoting as a <code>string</code>, we
@@ -188,16 +188,38 @@ the top of the form, in the order they were written.
 
 ## Usage
 
+There are three macros in Stijl.
+
 ### in-style
+
+Generates raw CSS properties. Can be used in "hiccup" templates <code>:style</code> attributes.
 
     (in-style :margin [:top 0 :left auto]) => "margin-top: 0;margin-left: auto"
 
+E.G.,
+
+    [:a {:href "http://github.com" :style (in-style :margin [:bottom px10 :top 0])}]
+
+Will, render to:
+
+    [:a {:href "http://github.com :style "margin-bottom: 10px; margin-top: 0"} "linky"]
+
+And after "hiccup" renders it:
+
+    <a href="http://github.com style="margin-bottom: 10px; margin-top: 0">
+      linky
+    </a>
+
 ### css
+
+Generates raw CSS. Can be output to a file, or used dynamically.
 
     (css [$demo :margin-top px80]) => "demo {\nmargin-top: 80px;\n}\n"
     (css [$demo :margin-top px-8]) => "demo {\nmargin-top: -8px;\n}\n"
 
 ### style
+
+Wraps <code>css</code> output in a hiccup-style <code>style</code> block.
 
     (style
       [$body :background-color (rgba 42 153 255 0.17)]

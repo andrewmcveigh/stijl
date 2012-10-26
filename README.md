@@ -1,8 +1,11 @@
 # stijl
 
-A Clojure library designed to generate CSS from clojure vectors.
+Stijl is the Dutch word for "Style". It's a library designed for generating CSS
+in Clojure.
 
-Inspiration taken from hiccup & sass.
+Inspiration for Stijl has been taken from
+[Hiccup](https://github.com/weavejester/hiccup) &
+[Sass](http://sass-lang.com/).
 
 ## Installation
 
@@ -156,11 +159,12 @@ offer a symbol shortcut: <code>px1</code>.
 
 Symbol shortcuts currently work with measurement units:
 
-    ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc"]
+    ["em" "ex" "px" "ch" "in" "cm" "mm" "pt" "pc" "%"]
     
     em-10 => "-10em"
     px100 => "100px"
     in6   => "6in"
+    %100  => "100%"
 
 ## Mixins
 

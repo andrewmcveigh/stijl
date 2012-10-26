@@ -9,15 +9,8 @@ Inspiration for Stijl has been taken from
 
 ## Installation
 
-Currently, Stijl is not in any Maven repository. We need to checkout this git
-repo, and <code>lein install</code> it before we declare it in
-<code>project.clj</code>.
-
-    git clone https://github.com/andrewmcveigh/stijl.git
-    
-    lein install
-
-Project.clj
+Stijl is now [in Clojars](https://clojars.org/com.dirtybrussels/stijl). Put the
+following dependency in your project.clj.
 
     [com.dirtybrussels/stijl "0.1.0-SNAPSHOT"]
 

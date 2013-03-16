@@ -1,10 +1,22 @@
-(ns stijl.mixin)
+; vim: lispwords+=defmixin
+
+(ns stijl.mixin
+  (:require [clojure.string :as string]))
 
 (defn px [n]
   (str n "px"))
 
+(defn rgb [r g b]
+  (format "rgb(%s, %s, %s)" r g b))
+
 (defn rgba [r g b a]
   (format "rgba(%s, %s, %s, %s)" r g b a))
+
+(defn color-stop
+  ([color stop]
+   (str color " " stop))
+  ([color]
+   (color-stop color nil)))
 
 (defn url [x]
   (format "url(%s)" x))
@@ -26,4 +38,14 @@
     :-moz-box-shadow ~@specs
     :-webkit-box-shadow ~@specs])
 
-; vim: lispwords+=defmixin
+(defmixin css-radial-gradient [spec & color-stops]
+  [:background-image (str "-o-radial-gradient("
+                          (string/join ", " (cons spec color-stops)) ")")
+   :background-image (str "-moz-radial-gradient("
+                          (string/join ", " (cons spec color-stops)) ")")
+   :background-image (str "-webkit-radial-gradient("
+                          (string/join ", " (cons spec color-stops)) ")")
+   :background-image (str "-ms-radial-gradient("
+                          (string/join ", " (cons spec color-stops)) ")")
+   :background-image (str "radial-gradient("
+                          (string/join ", " (cons spec color-stops)) ")")])

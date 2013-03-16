@@ -268,3 +268,12 @@ background-color: #F0EFEB;
 width: 939px;
 }
 ")))
+
+
+;(css3-map $table.table
+      ;[(box-shadow 0 px1 px3 (rgba 0 0 0 0.5)) :margin 0
+       ;$td [:padding 0]])
+
+;(css3 $table.table_tr
+      ;[:line-height px18 :margin 0
+       ;$td [:padding 0]])

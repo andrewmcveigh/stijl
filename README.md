@@ -202,7 +202,8 @@ There are three macros in Stijl.
 
 ### in-style
 
-Generates raw CSS properties. Can be used in "hiccup" templates <code>:style</code> attributes.
+Generates raw CSS properties. Can be used in "hiccup" templates
+<code>:style</code> attributes.
 
     user> (in-style :margin [:top 0 :left auto])
 

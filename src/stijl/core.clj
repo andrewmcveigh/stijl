@@ -107,9 +107,24 @@
                            (cons 'css-map (filter sub-selector? form)))}))
         body))
 
+;(defmacro css3-map [& form]
+  ;(mapv (fn [[selectors [properties]]]
+          ;(prn selectors properties)
+          ;(let [rules (partition-by #(or (selector? %) (vector? %)) properties)
+                ;subsels (filter (comp selector? first) rules)
+                ;props   (remove (comp selector? first) rules)]
+            ;(prn rules subsels props)
+            ;(vec (concat selectors (css3-map ~@properties)))))
+        ;(partition 2 (partition-by vector? form))))
+
 (defmacro css [& body]
   `(binding [*whitespace* true]
      (render-css (css-map ~@body))))
+
+;(defmacro css3 [& body]
+  ;(prn body)
+  ;`(binding [*whitespace* true]
+     ;(render-css (css-map ~@body))))
 
 (defmacro style [& body]
   `[:style {:type "text/css"} (css ~@body)])
